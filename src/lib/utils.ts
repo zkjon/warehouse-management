@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export function exportToCsv(filename: string, rows: object[]) {
   if (!rows || !rows.length) {
-    alert("No data to export.");
+    alert("No hay datos para exportar.");
     return;
   }
   const separator = ',';
@@ -45,6 +45,10 @@ export function exportToCsv(filename: string, rows: object[]) {
     document.body.removeChild(link);
     URL.revokeObjectURL(url); // Clean up the object URL
   } else {
-    alert("CSV export is not supported in your browser.");
+    alert("La exportación CSV no es compatible con tu navegador.");
   }
+}
+
+export function formatCurrencyEuro(value: number): string {
+  return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(value);
 }

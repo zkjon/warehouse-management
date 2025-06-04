@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useAppStore, useIsHydrated } from '@/store';
@@ -9,7 +10,7 @@ import { PageHeader } from '@/components/page-header';
 import Link from 'next/link';
 import { PlusCircle, Edit3, Trash2, PackageSearch } from 'lucide-react';
 import { format } from 'date-fns';
-import { es } from 'date-fns/locale'; // Import Spanish locale for date-fns
+import { es } from 'date-fns/locale';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,6 +23,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/use-toast";
+import { formatCurrencyEuro } from '@/lib/utils';
 
 export default function InventoryPage() {
   const products = useAppStore((state) => state.products);
@@ -104,14 +106,14 @@ export default function InventoryPage() {
                     <TableCell className="text-sm text-muted-foreground max-w-xs truncate">
                       {product.description || '-'}
                     </TableCell>
-                    <TableCell className="text-right">${product.purchasePrice.toFixed(2)}</TableCell>
-                    <TableCell className="text-right">${product.salePrice.toFixed(2)}</TableCell>
+                    <TableCell className="text-right">{formatCurrencyEuro(product.purchasePrice)}</TableCell>
+                    <TableCell className="text-right">{formatCurrencyEuro(product.salePrice)}</TableCell>
                     <TableCell className="text-right">{product.quantity}</TableCell>
                     <TableCell className="text-right">
-                      ${calculateTotalValue(product.purchasePrice, product.quantity).toFixed(2)}
+                      {formatCurrencyEuro(calculateTotalValue(product.purchasePrice, product.quantity))}
                     </TableCell>
                     <TableCell className="text-right">
-                      ${calculateTotalValue(product.salePrice, product.quantity).toFixed(2)}
+                      {formatCurrencyEuro(calculateTotalValue(product.salePrice, product.quantity))}
                     </TableCell>
                     <TableCell>{format(new Date(product.updatedAt), 'PPp', { locale: es })}</TableCell>
                     <TableCell className="text-right">

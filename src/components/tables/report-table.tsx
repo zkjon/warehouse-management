@@ -1,8 +1,10 @@
+
 "use client";
 
 import type { Product, StockMovement } from '@/types';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow, TableCaption } from '@/components/ui/table';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { formatCurrencyEuro } from '@/lib/utils';
 
 export interface ReportRow {
   productId: string;
@@ -49,10 +51,10 @@ export function ReportTable({ reportData, maxHeight = "600px" }: ReportTableProp
               <TableCell className="text-right">{row.totalEntries}</TableCell>
               <TableCell className="text-right">{row.totalExits}</TableCell>
               <TableCell className="text-right font-semibold">{row.currentStock}</TableCell>
-              <TableCell className="text-right">€{row.purchasePrice.toFixed(2)}</TableCell>
-              <TableCell className="text-right">€{row.salePrice.toFixed(2)}</TableCell>
-              <TableCell className="text-right">€{row.totalPurchaseValue.toFixed(2)}</TableCell>
-              <TableCell className="text-right">€{row.totalSaleValuePotential.toFixed(2)}</TableCell>
+              <TableCell className="text-right">{formatCurrencyEuro(row.purchasePrice)}</TableCell>
+              <TableCell className="text-right">{formatCurrencyEuro(row.salePrice)}</TableCell>
+              <TableCell className="text-right">{formatCurrencyEuro(row.totalPurchaseValue)}</TableCell>
+              <TableCell className="text-right">{formatCurrencyEuro(row.totalSaleValuePotential)}</TableCell>
             </TableRow>
           ))}
         </TableBody>
