@@ -71,7 +71,7 @@ export function ProductForm({ onSubmit, initialData, isEditing = false }: Produc
                 <FormItem>
                   <FormLabel>Nombre del Producto</FormLabel>
                   <FormControl>
-                    <Input placeholder="Paté Suave" {...field} />
+                    <Input placeholder="ej, Paté suave" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
