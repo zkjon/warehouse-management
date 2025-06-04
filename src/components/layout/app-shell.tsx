@@ -33,9 +33,9 @@ export function AppShell({ children }: { children: ReactNode }) {
       <div className="flex min-h-screen">
         <Sidebar className="border-r">
           <SidebarHeader className="p-4">
-            <Link href="/" className="flex items-center gap-2" aria-label="Página de inicio de AlmacenControl">
+            <Link href="/" className="flex items-center gap-2" aria-label="Página de inicio de Apis">
               <h1 className="text-xl font-semibold font-headline group-data-[state=collapsed]:hidden group-data-[collapsible=icon]:hidden">
-                AlmacenControl
+                Apis
               </h1>
             </Link>
           </SidebarHeader>
