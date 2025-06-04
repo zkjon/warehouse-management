@@ -1,4 +1,4 @@
-# Debe-Hacer Almacén: Sistema Avanzado de Gestión de Inventario
+# AlmacenControl: Sistema Avanzado de Gestión de Inventario 仓库
 
 ## Descripción General 📝
 
@@ -11,6 +11,21 @@ La aplicación está pensada para ser altamente funcional y adaptable, permitien
 *   **Generar informes detallados** sobre el estado y movimiento del inventario. 📄
 *   **Exportar datos relevantes** para análisis externos o copias de seguridad. 💾
 *   **Persistencia de datos local** para una experiencia de usuario fluida y sin interrupciones. 💻
+
+## Tecnologías Utilizadas 🛠️
+
+AlmacenControl está construido con un stack de tecnologías moderno y eficiente:
+
+*   **Next.js (v15+):** Framework de React para producción, utilizando el App Router para una mejor estructura y rendimiento. 🚀
+*   **React (v18+):** Biblioteca de JavaScript para construir interfaces de usuario. ⚛️
+*   **TypeScript:** Superset de JavaScript que añade tipado estático para mejorar la calidad y mantenibilidad del código. 🔷
+*   **ShadCN UI:** Colección de componentes de UI reutilizables, construidos sobre Radix UI y Tailwind CSS, personalizables y accesibles. 🎨
+*   **Tailwind CSS:** Framework de CSS "utility-first" para un diseño rápido y personalizado. 💨
+*   **Zustand:** Solución de gestión de estado simple, rápida y escalable para React, con persistencia en localStorage. 🐻
+*   **Lucide React:** Biblioteca de iconos SVG ligera y personalizable. ✨
+*   **React Hook Form & Zod:** Para la gestión y validación de formularios. 📝✅
+*   **Date-fns:** Para la manipulación y formateo de fechas. 📅
+*   **Genkit (Base):** Aunque no se han implementado funcionalidades de IA específicas en esta versión, la aplicación incluye la configuración base de Genkit, lo que sienta las bases para futuras integraciones de capacidades de inteligencia artificial (por ejemplo, predicción de stock, optimización de precios, etc.). 🤖
 
 ## Características Principales ✨
 
@@ -105,21 +120,6 @@ AlmacenControl ofrece un conjunto completo de herramientas para la gestión de i
 *   **Internacionalización:** 🇪🇸
     *   Toda la interfaz de usuario, incluyendo etiquetas, mensajes y formatos de fecha y moneda, está en castellano (Español). Las cantidades monetarias se muestran en formato Euro (€), utilizando punto como separador de miles y coma para los decimales.
 
-## Tecnologías Utilizadas 🛠️
-
-AlmacenControl está construido con un stack de tecnologías moderno y eficiente:
-
-*   **Next.js (v15+):** Framework de React para producción, utilizando el App Router para una mejor estructura y rendimiento.
-*   **React (v18+):** Biblioteca de JavaScript para construir interfaces de usuario.
-*   **TypeScript:** Superset de JavaScript que añade tipado estático para mejorar la calidad y mantenibilidad del código.
-*   **ShadCN UI:** Colección de componentes de UI reutilizables, construidos sobre Radix UI y Tailwind CSS, personalizables y accesibles.
-*   **Tailwind CSS:** Framework de CSS "utility-first" para un diseño rápido y personalizado.
-*   **Zustand:** Solución de gestión de estado simple, rápida y escalable para React, con persistencia en localStorage.
-*   **Lucide React:** Biblioteca de iconos SVG ligera y personalizable.
-*   **React Hook Form & Zod:** Para la gestión y validación de formularios.
-*   **Date-fns:** Para la manipulación y formateo de fechas.
-*   **Genkit (Base):** Aunque no se han implementado funcionalidades de IA específicas en esta versión, la aplicación incluye la configuración base de Genkit, lo que sienta las bases para futuras integraciones de capacidades de inteligencia artificial (por ejemplo, predicción de stock, optimización de precios, etc.). 🤖
-
 ## Cómo Empezar (Desarrollo) 🚀
 
 1.  **Clonar el repositorio:**
@@ -153,3 +153,4 @@ AlmacenControl está construido con un stack de tecnologías moderno y eficiente
 *   **Alertas de Stock Bajo:** Notificaciones automáticas cuando el stock de un producto alcance un umbral mínimo. ⚠️
 *   **Gráficos y Visualizaciones Avanzadas:** Integrar gráficos para un análisis visual más profundo de las tendencias de inventario. 📈
 
+```
