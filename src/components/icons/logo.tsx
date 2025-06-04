@@ -1,22 +1,16 @@
-import type { SVGProps } from 'react';
+import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
-export function Logo(props: SVGProps<SVGSVGElement>) {
+export function Logo({ className }: { className?: string }) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-6 w-6" // Default size, can be overridden by props.className
-      {...props}
-    >
-      <path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v2" />
-      <path d="M21 14v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-6" />
-      <path d="M3 10l9 5 9-5" />
-      <path d="M12 22V15" />
-    </svg>
+    <Image
+      src="https://placehold.co/104x40.png" // Reemplaza esto con la ruta a tu logo real
+      alt="Logo de la Empresa - AlmacenControl"
+      width={104} // Ancho deseado para mostrar el logo
+      height={40}  // Alto deseado para mostrar el logo
+      className={cn(className)}
+      data-ai-hint="company logo apis" // Indicador para el reemplazo de imagen
+      priority // Prioriza la carga del logo, ya que es probable que esté en el LCP
+    />
   );
 }
