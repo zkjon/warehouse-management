@@ -51,7 +51,7 @@ export default function InventoryPage() {
         action={
           <Link href="/products/add" passHref>
             <Button>
-              <PlusCircle className="mr-2 h-4 w-4" /> este boton quiero que este debajo del texto
+              <PlusCircle className="mr-2 h-4 w-4" /> Añadir Producto
             </Button>
           </Link>
         }
