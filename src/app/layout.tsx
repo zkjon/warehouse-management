@@ -4,7 +4,7 @@ import { AppShell } from '@/components/layout/app-shell';
 import { Toaster } from "@/components/ui/toaster"; // Import Toaster
 
 export const metadata: Metadata = {
-  title: 'AlmacenControl',
+  title: 'Debe Haber Almacén - Apis',
   description: 'Sistema de Gestión de Inventario',
 };
 
