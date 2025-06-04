@@ -1,16 +1,16 @@
-# **App Name**: AlmacenControl
+# **Nombre de la aplicación**: AlmacenControl
 
-## Core Features:
+## Características principales:
 
-- Add Products: Add products to the inventory, including name, description, purchase price, sale price and quantity.
-- Inventory Display: Display current inventory with product details, quantities and values.
-- Stock Tracking: Record stock entries (debe) and exits (haber) with date, product and quantity.
-- Reporting: View a report with entries (debe), exits (haber) and current stock levels for each product.
-- Export: Allows exporting a report containing product information.
+- Añadir productos: Añade productos al inventario, incluyendo nombre, descripción, precio de compra, precio de venta y cantidad.
+- Visualización de inventario: Muestra el inventario actual con detalles del producto, cantidades y valores.
+- Seguimiento de stock: Registra las entradas (debe) y salidas (haber) de stock con fecha, producto y cantidad.
+- Informes: Visualiza un informe con las entradas (debe), salidas (haber) y niveles de stock actuales para cada producto.
+- Exportar: Permite exportar un informe con información de productos.
 
-## Style Guidelines:
+## Guía de estilo:
 
-- Primary color: #be0917
-- Secondary color: #af8349
-- Tertiary color: #ffffff
-- Font: Calibri
+- Color primario: #be0917
+- Color secundario: #af8349
+- Color terciario: #ffffff
+- Fuente: Calibri
