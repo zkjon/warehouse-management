@@ -20,10 +20,10 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Boxes, FileText, LayoutGrid, PlusCircle, Repeat, Settings } from 'lucide-react'; // Repeat for ArrowRightLeft
 
 const navItems = [
-  { href: '/', label: 'Inventory', icon: LayoutGrid, exact: true },
-  { href: '/products/add', label: 'Add Product', icon: PlusCircle },
-  { href: '/stock/movements', label: 'Stock Movements', icon: Repeat },
-  { href: '/reports', label: 'Reports', icon: FileText },
+  { href: '/', label: 'Inventario', icon: LayoutGrid, exact: true },
+  { href: '/products/add', label: 'Añadir Producto', icon: PlusCircle },
+  { href: '/stock/movements', label: 'Movimientos Stock', icon: Repeat },
+  { href: '/reports', label: 'Informes', icon: FileText },
 ];
 
 export function AppShell({ children }: { children: ReactNode }) {
@@ -60,23 +60,23 @@ export function AppShell({ children }: { children: ReactNode }) {
             </ScrollArea>
           </SidebarContent>
           <SidebarFooter className="p-4 border-t">
-            {/* Footer content, e.g. settings or user */}
+            {/* Contenido del pie de página, ej. configuración o usuario */}
             {/* <SidebarMenuButton className="w-full justify-start">
               <Settings className="mr-2 h-5 w-5" />
-              <span>Settings</span>
+              <span>Configuración</span>
             </SidebarMenuButton> */}
           </SidebarFooter>
         </Sidebar>
 
         <SidebarInset className="flex-1 bg-background">
           <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b bg-background/80 backdrop-blur-sm px-4 md:px-6">
-            <div className="md:hidden"> {/* Only show trigger on mobile */}
+            <div className="md:hidden"> {/* Solo mostrar disparador en móvil */}
               <SidebarTrigger />
             </div>
             <div className="flex-1 text-center md:text-left">
-              {/* Can add page title here dynamically or breadcrumbs */}
+              {/* Se puede añadir título de página aquí dinámicamente o migas de pan */}
             </div>
-            {/* Add UserNav or other header items here if needed */}
+            {/* Añadir UserNav u otros ítems de cabecera aquí si es necesario */}
           </header>
           <main className="flex-1 p-4 md:p-6">
             {children}

@@ -49,16 +49,16 @@ export function ProductForm({ onSubmit, initialData, isEditing = false }: Produc
   const handleSubmit = (data: ProductFormData) => {
     onSubmit(data);
     if (!isEditing) {
-      form.reset(); // Reset form only if adding new, not editing
+      form.reset(); // Resetear formulario solo si se añade nuevo, no si se edita
     }
   };
 
   return (
     <Card className="max-w-2xl mx-auto">
       <CardHeader>
-        <CardTitle className="font-headline">{isEditing ? 'Edit Product' : 'Add New Product'}</CardTitle>
+        <CardTitle className="font-headline">{isEditing ? 'Editar Producto' : 'Añadir Nuevo Producto'}</CardTitle>
         <CardDescription>
-          {isEditing ? 'Update the details of the existing product.' : 'Fill in the details to add a new product to your inventory.'}
+          {isEditing ? 'Actualiza los detalles del producto existente.' : 'Rellena los detalles para añadir un nuevo producto a tu inventario.'}
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -69,9 +69,9 @@ export function ProductForm({ onSubmit, initialData, isEditing = false }: Produc
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Product Name</FormLabel>
+                  <FormLabel>Nombre del Producto</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g., Coffee Beans" {...field} />
+                    <Input placeholder="ej., Granos de Café" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -82,9 +82,9 @@ export function ProductForm({ onSubmit, initialData, isEditing = false }: Produc
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Description (Optional)</FormLabel>
+                  <FormLabel>Descripción (Opcional)</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Detailed description of the product" {...field} />
+                    <Textarea placeholder="Descripción detallada del producto" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -96,7 +96,7 @@ export function ProductForm({ onSubmit, initialData, isEditing = false }: Produc
                 name="purchasePrice"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Purchase Price ($)</FormLabel>
+                    <FormLabel>Precio de Compra (€)</FormLabel>
                     <FormControl>
                       <Input type="number" step="0.01" placeholder="0.00" {...field} />
                     </FormControl>
@@ -109,7 +109,7 @@ export function ProductForm({ onSubmit, initialData, isEditing = false }: Produc
                 name="salePrice"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Sale Price ($)</FormLabel>
+                    <FormLabel>Precio de Venta (€)</FormLabel>
                     <FormControl>
                       <Input type="number" step="0.01" placeholder="0.00" {...field} />
                     </FormControl>
@@ -123,18 +123,18 @@ export function ProductForm({ onSubmit, initialData, isEditing = false }: Produc
               name="quantity"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Initial Quantity</FormLabel>
+                  <FormLabel>Cantidad Inicial</FormLabel>
                   <FormControl>
                     <Input type="number" step="1" placeholder="0" {...field} disabled={isEditing} />
                   </FormControl>
-                  {isEditing && <FormDescription>Quantity is managed via Stock Movements for existing products.</FormDescription>}
+                  {isEditing && <FormDescription>La cantidad se gestiona mediante Movimientos de Stock para productos existentes.</FormDescription>}
                   <FormMessage />
                 </FormItem>
               )}
             />
             <Button type="submit" className="w-full md:w-auto">
               <Save className="mr-2 h-4 w-4" />
-              {isEditing ? 'Save Changes' : 'Add Product'}
+              {isEditing ? 'Guardar Cambios' : 'Añadir Producto'}
             </Button>
           </form>
         </Form>

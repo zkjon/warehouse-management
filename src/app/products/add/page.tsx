@@ -30,8 +30,8 @@ export default function AddProductPage() {
           setEditingProduct(product);
           setIsEditing(true);
         } else {
-          toast({ title: "Error", description: "Product to edit not found.", variant: "destructive" });
-          router.push('/products/add'); // Go back to add mode
+          toast({ title: "Error", description: "Producto a editar no encontrado.", variant: "destructive" });
+          router.push('/products/add'); // Volver al modo de añadir
         }
       } else {
         setEditingProduct(null);
@@ -44,42 +44,42 @@ export default function AddProductPage() {
   const handleSubmit = (data: ProductFormData) => {
     try {
       if (isEditing && editingProduct) {
-        // For editing, we don't update quantity directly via this form.
-        // Quantity is managed by stock movements. We only update other details.
+        // Para editar, no actualizamos la cantidad directamente desde este formulario.
+        // La cantidad se gestiona mediante movimientos de stock. Solo actualizamos otros detalles.
         const { quantity, ...updateData } = data;
         updateProduct(editingProduct.id, updateData);
         toast({
-          title: 'Product Updated',
-          description: `${data.name} has been successfully updated.`,
+          title: 'Producto Actualizado',
+          description: `${data.name} ha sido actualizado correctamente.`,
         });
       } else {
         addProduct(data);
         toast({
-          title: 'Product Added',
-          description: `${data.name} has been successfully added to your inventory.`,
+          title: 'Producto Añadido',
+          description: `${data.name} ha sido añadido correctamente a tu inventario.`,
         });
       }
-      router.push('/'); // Navigate to inventory page after submission
+      router.push('/'); // Navegar a la página de inventario después del envío
     } catch (error) {
-      console.error("Failed to submit product:", error);
+      console.error("Error al enviar el producto:", error);
       toast({
         title: 'Error',
-        description: 'There was a problem saving the product. Please try again.',
+        description: 'Hubo un problema al guardar el producto. Por favor, inténtalo de nuevo.',
         variant: 'destructive',
       });
     }
   };
   
   if (!isHydrated && searchParams.get('edit')) {
-    // Prevent form rendering with potentially incorrect state if editing and not hydrated
-    return <div className="flex justify-center items-center h-screen"><p>Loading product data...</p></div>;
+    // Evitar renderizar el formulario con un estado potencialmente incorrecto si se está editando y no está hidratado
+    return <div className="flex justify-center items-center h-screen"><p>Cargando datos del producto...</p></div>;
   }
 
   return (
     <>
       <PageHeader 
-        title={isEditing ? "Edit Product" : "Add New Product"}
-        description={isEditing ? "Update product details." : "Enter the information for a new product."}
+        title={isEditing ? "Editar Producto" : "Añadir Nuevo Producto"}
+        description={isEditing ? "Actualiza los detalles del producto." : "Introduce la información para un nuevo producto."}
       />
       <ProductForm onSubmit={handleSubmit} initialData={editingProduct} isEditing={isEditing} />
     </>

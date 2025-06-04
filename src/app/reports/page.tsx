@@ -32,7 +32,7 @@ export default function ReportsPage() {
         productName: product.name,
         totalEntries,
         totalExits,
-        currentStock: product.quantity, // This is the source of truth from product state
+        currentStock: product.quantity, // Esta es la fuente de verdad del estado del producto
         purchasePrice: product.purchasePrice,
         salePrice: product.salePrice,
         totalPurchaseValue: product.purchasePrice * product.quantity,
@@ -43,35 +43,35 @@ export default function ReportsPage() {
 
   const handleExport = () => {
     if (reportData.length > 0) {
-      // Select and rename columns for export
+      // Seleccionar y renombrar columnas para la exportación
       const exportableData = reportData.map(row => ({
-        "Product Name": row.productName,
-        "Current Stock": row.currentStock,
-        "Total Entries": row.totalEntries,
-        "Total Exits": row.totalExits,
-        "Purchase Price": row.purchasePrice.toFixed(2),
-        "Sale Price": row.salePrice.toFixed(2),
-        "Total Purchase Value": row.totalPurchaseValue.toFixed(2),
-        "Potential Sale Value": row.totalSaleValuePotential.toFixed(2),
+        "Nombre Producto": row.productName,
+        "Stock Actual": row.currentStock,
+        "Entradas Totales": row.totalEntries,
+        "Salidas Totales": row.totalExits,
+        "Precio Compra": row.purchasePrice.toFixed(2),
+        "Precio Venta": row.salePrice.toFixed(2),
+        "Valor Total Compra": row.totalPurchaseValue.toFixed(2),
+        "Valor Venta Potencial": row.totalSaleValuePotential.toFixed(2),
       }));
-      exportToCsv('almacen_control_report.csv', exportableData);
+      exportToCsv('informe_almacen_control.csv', exportableData);
     } else {
-      alert("No data to export.");
+      alert("No hay datos para exportar.");
     }
   };
 
   if (!isHydrated) {
-    return <div className="flex justify-center items-center h-screen"><p>Loading report data...</p></div>;
+    return <div className="flex justify-center items-center h-screen"><p>Cargando datos del informe...</p></div>;
   }
 
   return (
     <>
       <PageHeader 
-        title="Inventory Report"
-        description="A comprehensive summary of your product inventory, stock movements, and values."
+        title="Informe de Inventario"
+        description="Un resumen completo del inventario de tus productos, movimientos de stock y valores."
         action={
           <Button onClick={handleExport} disabled={reportData.length === 0}>
-            <Download className="mr-2 h-4 w-4" /> Export Report (CSV)
+            <Download className="mr-2 h-4 w-4" /> Exportar Informe (CSV)
           </Button>
         }
       />
@@ -81,14 +81,14 @@ export default function ReportsPage() {
             <div className="mx-auto bg-secondary/10 p-3 rounded-full mb-2 w-fit">
                 <PackageSearch className="h-10 w-10 text-secondary" />
             </div>
-            <CardTitle className="font-headline">Report is Empty</CardTitle>
-            <CardDescription>There are no products or stock movements to generate a report. Add some products and record movements first.</CardDescription>
+            <CardTitle className="font-headline">El Informe está Vacío</CardTitle>
+            <CardDescription>No hay productos ni movimientos de stock para generar un informe. Añade algunos productos y registra movimientos primero.</CardDescription>
           </CardHeader>
         </Card>
       ) : (
         <Card>
           <CardHeader>
-            <CardTitle>Detailed Stock Report</CardTitle>
+            <CardTitle>Informe Detallado de Stock</CardTitle>
           </CardHeader>
           <CardContent>
             <ReportTable reportData={reportData} />

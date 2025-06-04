@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/toaster"; // Import Toaster
 
 export const metadata: Metadata = {
   title: 'AlmacenControl',
-  description: 'Inventory Management System',
+  description: 'Sistema de Gestión de Inventario',
 };
 
 export default function RootLayout({
@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       {/* suppressHydrationWarning for zustand persist */}
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />

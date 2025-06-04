@@ -23,6 +23,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
+import { es } from 'date-fns/locale'; // Import Spanish locale
 import { CalendarIcon, Save } from 'lucide-react';
 import type { Product } from '@/types';
 
@@ -46,24 +47,23 @@ export function StockMovementForm({ products, onSubmit }: StockMovementFormProps
   const handleSubmit = (data: StockMovementFormData) => {
     const product = products.find(p => p.id === data.productId);
     if (data.type === 'exit' && product && data.quantity > product.quantity) {
-        form.setError("quantity", { type: "manual", message: `Cannot exit more than available stock (${product.quantity}).` });
+        form.setError("quantity", { type: "manual", message: `No se puede sacar más que el stock disponible (${product.quantity}).` });
         return;
     }
     onSubmit(data);
     form.reset({
-      ...form.getValues(), // keep product selection if needed or reset specific fields
-      productId: data.productId, // keep product selected
+      ...form.getValues(), 
+      productId: data.productId, 
       quantity: 1, 
       notes: '', 
-      // date: new Date() // reset date or keep
     });
   };
 
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle className="font-headline">Record Stock Movement</CardTitle>
-        <CardDescription>Log entries (debe) or exits (haber) for your products.</CardDescription>
+        <CardTitle className="font-headline">Registrar Movimiento de Stock</CardTitle>
+        <CardDescription>Registra entradas (debe) o salidas (haber) para tus productos.</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -73,11 +73,11 @@ export function StockMovementForm({ products, onSubmit }: StockMovementFormProps
               name="productId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Product</FormLabel>
+                  <FormLabel>Producto</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a product" />
+                        <SelectValue placeholder="Selecciona un producto" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -98,7 +98,7 @@ export function StockMovementForm({ products, onSubmit }: StockMovementFormProps
               name="type"
               render={({ field }) => (
                 <FormItem className="space-y-3">
-                  <FormLabel>Movement Type</FormLabel>
+                  <FormLabel>Tipo de Movimiento</FormLabel>
                   <FormControl>
                     <RadioGroup
                       onValueChange={field.onChange}
@@ -109,13 +109,13 @@ export function StockMovementForm({ products, onSubmit }: StockMovementFormProps
                         <FormControl>
                           <RadioGroupItem value="entry" />
                         </FormControl>
-                        <FormLabel className="font-normal">Entry (Debe / Purchase / In)</FormLabel>
+                        <FormLabel className="font-normal">Entrada (Debe / Compra / Ingreso)</FormLabel>
                       </FormItem>
                       <FormItem className="flex items-center space-x-3 space-y-0">
                         <FormControl>
                           <RadioGroupItem value="exit" />
                         </FormControl>
-                        <FormLabel className="font-normal">Exit (Haber / Sale / Out)</FormLabel>
+                        <FormLabel className="font-normal">Salida (Haber / Venta / Egreso)</FormLabel>
                       </FormItem>
                     </RadioGroup>
                   </FormControl>
@@ -129,7 +129,7 @@ export function StockMovementForm({ products, onSubmit }: StockMovementFormProps
               name="quantity"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Quantity</FormLabel>
+                  <FormLabel>Cantidad</FormLabel>
                   <FormControl>
                     <Input type="number" placeholder="0" {...field} min="1" />
                   </FormControl>
@@ -143,7 +143,7 @@ export function StockMovementForm({ products, onSubmit }: StockMovementFormProps
               name="date"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
-                  <FormLabel>Date of Movement</FormLabel>
+                  <FormLabel>Fecha del Movimiento</FormLabel>
                   <Popover>
                     <PopoverTrigger asChild>
                       <FormControl>
@@ -154,7 +154,7 @@ export function StockMovementForm({ products, onSubmit }: StockMovementFormProps
                             !field.value && 'text-muted-foreground'
                           )}
                         >
-                          {field.value ? format(field.value, 'PPP') : <span>Pick a date</span>}
+                          {field.value ? format(field.value, 'PPP', { locale: es }) : <span>Elige una fecha</span>}
                           <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                         </Button>
                       </FormControl>
@@ -166,6 +166,7 @@ export function StockMovementForm({ products, onSubmit }: StockMovementFormProps
                         onSelect={field.onChange}
                         disabled={(date) => date > new Date() || date < new Date('1900-01-01')}
                         initialFocus
+                        locale={es} // Add locale here
                       />
                     </PopoverContent>
                   </Popover>
@@ -179,9 +180,9 @@ export function StockMovementForm({ products, onSubmit }: StockMovementFormProps
               name="notes"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Notes (Optional)</FormLabel>
+                  <FormLabel>Notas (Opcional)</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="e.g., Supplier info, reason for adjustment" {...field} />
+                    <Textarea placeholder="ej., Info del proveedor, motivo del ajuste" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -189,7 +190,7 @@ export function StockMovementForm({ products, onSubmit }: StockMovementFormProps
             />
             <Button type="submit" className="w-full md:w-auto">
               <Save className="mr-2 h-4 w-4" />
-              Record Movement
+              Registrar Movimiento
             </Button>
           </form>
         </Form>

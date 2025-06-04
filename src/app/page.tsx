@@ -9,6 +9,7 @@ import { PageHeader } from '@/components/page-header';
 import Link from 'next/link';
 import { PlusCircle, Edit3, Trash2, PackageSearch } from 'lucide-react';
 import { format } from 'date-fns';
+import { es } from 'date-fns/locale'; // Import Spanish locale for date-fns
 import {
   AlertDialog,
   AlertDialogAction,
@@ -31,13 +32,13 @@ export default function InventoryPage() {
   const handleDeleteProduct = (productId: string) => {
     deleteProduct(productId);
     toast({
-      title: "Product Deleted",
-      description: "The product and its associated stock movements have been removed.",
+      title: "Producto Eliminado",
+      description: "El producto y sus movimientos de stock asociados han sido eliminados.",
     });
   };
 
   if (!isHydrated) {
-    return <div className="flex justify-center items-center h-screen"><p>Loading inventory...</p></div>;
+    return <div className="flex justify-center items-center h-screen"><p>Cargando inventario...</p></div>;
   }
 
   const calculateTotalValue = (price: number, quantity: number) => price * quantity;
@@ -45,12 +46,12 @@ export default function InventoryPage() {
   return (
     <>
       <PageHeader 
-        title="Inventory Overview"
-        description="Manage and view your current product stock."
+        title="Resumen de Inventario"
+        description="Gestiona y visualiza el stock actual de tus productos."
         action={
           <Link href="/products/add" passHref>
             <Button>
-              <PlusCircle className="mr-2 h-4 w-4" /> Add New Product
+              <PlusCircle className="mr-2 h-4 w-4" /> Añadir Nuevo Producto
             </Button>
           </Link>
         }
@@ -62,13 +63,13 @@ export default function InventoryPage() {
              <div className="mx-auto bg-secondary/10 p-3 rounded-full mb-2 w-fit">
                 <PackageSearch className="h-10 w-10 text-secondary" />
               </div>
-            <CardTitle className="font-headline">No Products Yet</CardTitle>
-            <CardDescription>Start by adding your first product to the inventory.</CardDescription>
+            <CardTitle className="font-headline">Aún No Hay Productos</CardTitle>
+            <CardDescription>Comienza añadiendo tu primer producto al inventario.</CardDescription>
           </CardHeader>
           <CardContent>
             <Link href="/products/add" passHref>
               <Button size="lg">
-                <PlusCircle className="mr-2 h-5 w-5" /> Add Product
+                <PlusCircle className="mr-2 h-5 w-5" /> Añadir Producto
               </Button>
             </Link>
           </CardContent>
@@ -76,24 +77,24 @@ export default function InventoryPage() {
       ) : (
         <Card>
           <CardHeader>
-            <CardTitle>Current Stock</CardTitle>
+            <CardTitle>Stock Actual</CardTitle>
             <CardDescription>
-              A list of all products currently in your inventory.
+              Un listado de todos los productos actualmente en tu inventario.
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Description</TableHead>
-                  <TableHead className="text-right">Purchase Price</TableHead>
-                  <TableHead className="text-right">Sale Price</TableHead>
-                  <TableHead className="text-right">Quantity</TableHead>
-                  <TableHead className="text-right">Total Purchase Value</TableHead>
-                  <TableHead className="text-right">Total Sale Value</TableHead>
-                  <TableHead>Last Updated</TableHead>
-                  <TableHead className="text-right">Actions</TableHead>
+                  <TableHead>Nombre</TableHead>
+                  <TableHead>Descripción</TableHead>
+                  <TableHead className="text-right">Precio Compra</TableHead>
+                  <TableHead className="text-right">Precio Venta</TableHead>
+                  <TableHead className="text-right">Cantidad</TableHead>
+                  <TableHead className="text-right">Valor Total Compra</TableHead>
+                  <TableHead className="text-right">Valor Total Venta</TableHead>
+                  <TableHead>Última Actualización</TableHead>
+                  <TableHead className="text-right">Acciones</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -112,36 +113,36 @@ export default function InventoryPage() {
                     <TableCell className="text-right">
                       ${calculateTotalValue(product.salePrice, product.quantity).toFixed(2)}
                     </TableCell>
-                    <TableCell>{format(new Date(product.updatedAt), 'PPp')}</TableCell>
+                    <TableCell>{format(new Date(product.updatedAt), 'PPp', { locale: es })}</TableCell>
                     <TableCell className="text-right">
                        <Link href={`/products/add?edit=${product.id}`} passHref>
                         <Button variant="ghost" size="icon" className="mr-2 hover:text-primary">
                           <Edit3 className="h-4 w-4" />
-                          <span className="sr-only">Edit</span>
+                          <span className="sr-only">Editar</span>
                         </Button>
                       </Link>
                       <AlertDialog>
                         <AlertDialogTrigger asChild>
                           <Button variant="ghost" size="icon" className="hover:text-destructive">
                             <Trash2 className="h-4 w-4" />
-                            <span className="sr-only">Delete</span>
+                            <span className="sr-only">Eliminar</span>
                           </Button>
                         </AlertDialogTrigger>
                         <AlertDialogContent>
                           <AlertDialogHeader>
-                            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                            <AlertDialogTitle>¿Estás seguro?</AlertDialogTitle>
                             <AlertDialogDescription>
-                              This action cannot be undone. This will permanently delete the product
-                              and all associated stock movements.
+                              Esta acción no se puede deshacer. Esto eliminará permanentemente el producto
+                              y todos los movimientos de stock asociados.
                             </AlertDialogDescription>
                           </AlertDialogHeader>
                           <AlertDialogFooter>
-                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                            <AlertDialogCancel>Cancelar</AlertDialogCancel>
                             <AlertDialogAction
                               onClick={() => handleDeleteProduct(product.id)}
                               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
                             >
-                              Delete
+                              Eliminar
                             </AlertDialogAction>
                           </AlertDialogFooter>
                         </AlertDialogContent>
