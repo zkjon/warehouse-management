@@ -1,4 +1,5 @@
 "use client";
+import * as React from 'react'; // Added React import
 import type { Product, StockMovement } from '@/types';
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
