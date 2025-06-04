@@ -16,12 +16,6 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
-      {
-        protocol: 'https',
-        hostname: 'apis.es',
-        port: '',
-        pathname: '/**',
-      },
     ],
   },
 };

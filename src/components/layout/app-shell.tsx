@@ -1,4 +1,3 @@
-
 "use client";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -15,7 +14,6 @@ import {
   SidebarInset,
   SidebarTrigger,
 } from '@/components/ui/sidebar';
-import { Logo } from '@/components/icons/logo';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { FileText, LayoutGrid, PlusCircle, Repeat } from 'lucide-react'; // Repeat for ArrowRightLeft
@@ -36,7 +34,6 @@ export function AppShell({ children }: { children: ReactNode }) {
         <Sidebar className="border-r">
           <SidebarHeader className="p-4">
             <Link href="/" className="flex items-center gap-2" aria-label="Página de inicio de AlmacenControl">
-              <Logo /> {/* Logo de la empresa */}
               <h1 className="text-xl font-semibold font-headline group-data-[state=collapsed]:hidden group-data-[collapsible=icon]:hidden">
                 AlmacenControl
               </h1>
@@ -73,9 +70,6 @@ export function AppShell({ children }: { children: ReactNode }) {
               <div className="md:hidden"> {/* Solo mostrar disparador en móvil */}
                 <SidebarTrigger />
               </div>
-              <Link href="/" aria-label="Volver a la página de inicio">
-                <Logo /> {/* Logo de la empresa en la cabecera principal */}
-              </Link>
             </div>
             <div>
               {/* Aquí podrías añadir elementos como un menú de usuario (UserNav) */}
