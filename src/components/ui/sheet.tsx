@@ -72,8 +72,7 @@ const SheetContent = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Content>,
   SheetContentProps
 >(({ side = "right", className, children, accessibleSheetTitle, ...props }, ref) => {
-  const titleId = React.useId();
-  const effectiveTitle = accessibleSheetTitle || "Panel"; // Default accessible title
+  const effectiveTitle = accessibleSheetTitle || "Panel"; 
 
   return (
     <SheetPortal>
@@ -81,10 +80,9 @@ const SheetContent = React.forwardRef<
       <SheetPrimitive.Content
         ref={ref}
         className={cn(sheetVariants({ side }), className)}
-        aria-labelledby={titleId}
         {...props}
       >
-        <SheetTitle id={titleId} className="sr-only">
+        <SheetTitle className="sr-only">
           {effectiveTitle}
         </SheetTitle>
         {children}
